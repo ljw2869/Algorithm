@@ -14,22 +14,30 @@ int main(){
     
     int a,b;
     cin>>a>>b;
-    queue<node>q;
-    q.push(make_pair(a,0));
-    int depth=0;
-    while(!q.empty()){
-        node x=q.front();
-        q.pop();
-        if(x.first==b){
-            cout<<x.second+1<<endl;
+    int result=1;//이게 결과값
+    //b에서 a로 내려가면서 만들수 있으면 출력하는 과정을 반복-그리디
+    //b에서 a로 내려가는 과정이면 계산하는 과정에서 int자료형의 범위를 벗어나는 경우가 없다
+    while(true){
+        if(a==b){
+            break;
+        }
+        else if(a>b){
+            cout<<-1<<endl;
             return 0;
         }
-        if(x.first*2<=b)
-            q.push(make_pair(x.first*2,x.second+1));
-
-        if(x.first*10+1<=b)
-            q.push(make_pair(x.first*10+1,x.second+1));
+        
+        if(b%2==0){
+            b/=2;
+        }
+        else if(b%10==1){
+            b=(b-1)/10;
+        }
+        else{
+            cout<<-1<<endl;
+            return 0;
+        }
+        result++;
     }
-    cout<<-1<<endl;
+    cout<<result<<endl;
     return 0;
 }
