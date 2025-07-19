@@ -25,12 +25,11 @@ int main(){
             q.push(i);
         }
     }
-    vector<int>result;
+
     while(!q.empty()){
         int top=q.front();
         q.pop();
-        result.push_back(top);
-
+        cout<<top<<" ";
         for(auto i:graph[top]){
             arr[i]--;
             if(arr[i]==0){
@@ -38,12 +37,7 @@ int main(){
             }
         }
     }
-    for(int i=0;i<result.size();i++){
-        if(i==result.size()-1)
-            cout<<result[i];
-        else
-            cout<<result[i]<<" ";
-    }
+    
     delete[] arr;
     return 0;
     
