@@ -48,13 +48,12 @@ int main(){
         cin>>a>>b;
 
         result=UNION(a,b);
-        if(result&&!flag){ //계속 그래프를 그리면서 그 이후에도 사이클이 생기도록 입력을 받았을 때 계속 출력을 하면 안되고 처음으로 사이클이 생긴 부분에서만 출력해야 함!!!(출력 초과 문제)
+        if(result){ 
             cout<<i+1<<"\n";
-            flag=true;
+            return 0; 
         }
     }
-    if(flag==false)
-        cout<<0<<"\n";
+    cout<<0<<"\n";
     
     return 0;
     
